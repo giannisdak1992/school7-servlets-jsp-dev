@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central Service</title>
-    <!-- Bootstrap CSS -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
         <script>
               tailwind.config = { theme: { extend: boxShadow: {
                 custom: "0px 4px 20px 0px #00000026"
               } } }
-            </script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+    </script>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
