@@ -24,27 +24,32 @@
     <%@ include file="header.jsp" %>
 
     <div class="flex flex-grow min-h-screen">
-        <div class="w-[250px] h-screen bg-gray-200 border-r border-gray-300 px-4 py-6">
-          <nav class="space-y-2">
-            <div class="relative group">
-              <a href="#" class="block px-4 py-2 text-slate-600 text-base font-medium rounded-md hover:bg-gray-100 hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Καθηγητές
+      <div class="w-[250px] h-screen bg-gray-200 border-r border-gray-300 px-4 py-6">
+        <nav class="space-y-2">
+          <div class="relative">
+            <!-- Κουμπί που κάνει toggle το dropdown -->
+            <button
+              onclick="toggleDropdown('teachersDropdown')"
+              class="w-full text-left px-4 py-2 text-slate-600 text-base font-medium rounded-md hover:bg-gray-100 hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Καθηγητές
+            </button>
+
+            <!-- Dropdown -->
+            <div id="teachersDropdown" class="hidden absolute left-0 w-full bg-white shadow-lg rounded-md mt-2 z-10">
+              <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />"
+                 class="block px-4 py-2 text-slate-600 hover:bg-gray-100 hover:text-blue-600 transition">
+                Προβολή Καθηγητών
               </a>
-
-              <div class="absolute left-0 w-full bg-white shadow-lg rounded-md mt-2 hidden group-hover:block group-focus-within:block">
-                <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />"
-                   class="block px-4 py-2 text-slate-600 hover:bg-gray-100 hover:text-blue-600 transition">
-                  Προβολή Καθηγητών
-                </a>
-                <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/insert' />"
-                   class="block px-4 py-2 text-slate-600 hover:bg-gray-100 hover:text-blue-600 transition">
-                  Εισαγωγή Καθηγητή
-                </a>
-              </div>
+              <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/insert' />"
+                 class="block px-4 py-2 text-slate-600 hover:bg-gray-100 hover:text-blue-600 transition">
+                Εισαγωγή Καθηγητή
+              </a>
             </div>
-          </nav>
-        </div>
-
+          </div>
+        </nav>
+      </div>
+    </div>
 
 
 
@@ -59,5 +64,20 @@
     <%@ include file="footer.jsp" %>
 
 </body>
+
+<script>
+  function toggleDropdown(id) {
+    const dropdown = document.getElementById(id);
+    dropdown.classList.toggle('hidden');
+  }
+
+  // Optional: Κλείσιμο dropdown αν κάνεις click έξω
+  window.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('teachersDropdown');
+    if (!e.target.closest('button') && !e.target.closest('#teachersDropdown')) {
+      dropdown.classList.add('hidden');
+    }
+  });
+</script>
 
 </html>
